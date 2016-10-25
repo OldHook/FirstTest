@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ru.incbt.mvl.multitest</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>../web</module>
+		<module>../ear</module>
+		<module>../domain</module>
+		<module>../wlp-deploy</module>
+	</modules>
+
+	<properties>
+		<!-- Application properties -->
+		<applicationName>Multitest</applicationName>
+		<webContextRoot>/multitest</webContextRoot>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Version control -->
+		<java-version>1.8</java-version>
+		<war-plugin-version>2.6</war-plugin-version>
+		<ear-plugin-version>2.10.1</ear-plugin-version>
+		<compiler-plugin-version>3.5.1</compiler-plugin-version>
+		<resources-plugin-version>3.0.1</resources-plugin-version>
+		<source-plugin-version>3.0.0</source-plugin-version>
+		<clean-plugin-version>3.0.0</clean-plugin-version>
+		<junit-version>4.12</junit-version>
+		<deltaspike.version>1.7.1</deltaspike.version>
+		<javaee-api-version>7.0</javaee-api-version>
+		<vaadin.version>7.7.3</vaadin.version>
+		<servlet.version>3.0.1</servlet.version>
+		<inject.version>1</inject.version>
+		<cdi.version>1.2</cdi.version>
+		<javax-annotation-version>1.2</javax-annotation-version>
+		<!-- Liberty properties -->
+		<liberty.plugin.version>1.2.1</liberty.plugin.version>
+		<liberty.version>16.0.0.3</liberty.version>
+		<liberty.http.port>9080</liberty.http.port>
+		<liberty.https.port>9443</liberty.https.port>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax.annotation</groupId>
+				<artifactId>javax.annotation-api</artifactId>
+				<version>${javax-annotation-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>${inject.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.enterprise</groupId>
+				<artifactId>cdi-api</artifactId>
+				<version>${cdi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-version}</version>
+			</dependency>
+			<!--dependency> <groupId>org.apache.deltaspike.core</groupId> <artifactId>deltaspike-core-api</artifactId> 
+				<version>${deltaspike.version}</version> <scope>compile</scope> </dependency -->
+			<!--dependency> <groupId>org.apache.deltaspike.core</groupId> <artifactId>deltaspike-core-impl</artifactId> 
+				<version>${deltaspike.version}</version> <scope>runtime</scope> </dependency -->
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>${javaee-api-version}</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Plugin management -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${compiler-plugin-version}</version>
+					<configuration>
+						<source>${java-version}</source>
+						<target>${java-version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.10.4</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>2.6</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${resources-plugin-version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${source-plugin-version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>${war-plugin-version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>${clean-plugin-version}</version>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
